@@ -1,0 +1,13 @@
+[Unit]
+Description=Guacamole service
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStart=/opt/bin/docker-compose -f /srv/guacamole/docker-compose.yml up
+ExecStop=/opt/bin/docker-compose -f /srv/guacamole/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target
+
